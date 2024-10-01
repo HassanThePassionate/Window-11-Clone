@@ -14,14 +14,14 @@ const Calculator = ({ isAppOpen, toggleCalculator }) => {
 
   const calculate = () => {
     try {
-      const result = eval(display);
+      const result = parseFloat(display.replace(/[^0-9+\-*\/\.\s]/g, ""));
       setClickCount((prevClickCount) => prevClickCount + 1);
 
       if (clickCount === 0 || clickCount === 4) {
         setDisplay("Hello World");
         setClickCount(1);
       } else {
-        if (result !== undefined && !isNaN(result)) {
+        if (!isNaN(result)) {
           setDisplay(result.toString());
           setSubmit(true);
         } else {
@@ -78,26 +78,26 @@ const Calculator = ({ isAppOpen, toggleCalculator }) => {
         isAppOpen ? "" : "hidden"
       } z-30 w-full h-screen pointer-events-none absolute`}
     >
-      <Draggable handle=".title-bar" nodeRef={calculatorRef} bounds={bounds}>
+      <Draggable handle='.title-bar' nodeRef={calculatorRef} bounds={bounds}>
         <div
           ref={calculatorRef}
-          className="window bg-black w-[34em] h-[50em] rounded-xl overflow-hidden border-neutral-700 border-[1.5px] pointer-events-auto"
+          className='window bg-black w-[34em] h-[50em] rounded-xl overflow-hidden border-neutral-700 border-[1.5px] pointer-events-auto'
         >
-          <div className="title-bar">
-            <div className="text-white h-9 flex justify-between select-none">
-              <div className="m-1 ml-4 font-normal">Calculator</div>
-              <div className="flex">
+          <div className='title-bar'>
+            <div className='text-white h-9 flex justify-between select-none'>
+              <div className='m-1 ml-4 font-normal'>Calculator</div>
+              <div className='flex'>
                 <div
-                  className="material-symbols-outlined hover:bg-neutral-800 mb-2 w-11 flex justify-center items-center text-xl"
+                  className='material-symbols-outlined hover:bg-neutral-800 mb-2 w-11 flex justify-center items-center text-xl'
                   onClick={toggleCalculator}
                 >
                   minimize
                 </div>
-                <div className="material-symbols-outlined hover:bg-neutral-800 mb-2 w-11 flex justify-center items-center text-sm">
+                <div className='material-symbols-outlined hover:bg-neutral-800 mb-2 w-11 flex justify-center items-center text-sm'>
                   check_box_outline_blank
                 </div>
                 <div
-                  className="material-symbols-outlined hover:bg-red-700 mb-2 w-12 flex justify-center items-center text-xl"
+                  className='material-symbols-outlined hover:bg-red-700 mb-2 w-12 flex justify-center items-center text-xl'
                   onClick={toggleCalculator}
                 >
                   close
@@ -105,16 +105,16 @@ const Calculator = ({ isAppOpen, toggleCalculator }) => {
               </div>
             </div>
           </div>
-          <div className="content text-white select-none text-center flex justify-center">
-            <div className="top-[10px] bg-neutral-900 mx-auto p-20 shadow-lg text-white h-screen">
+          <div className='content text-white select-none text-center flex justify-center'>
+            <div className='top-[10px] bg-neutral-900 mx-auto p-20 shadow-lg text-white h-screen'>
               <input
-                type="text"
+                type='text'
                 value={display}
-                className="w-full mb-10 px-4 py-3 text-3xl rounded-lg bg-transparent shadow-inner text-right"
-                placeholder="0"
+                className='w-full mb-10 px-4 py-3 text-3xl rounded-lg bg-transparent shadow-inner text-right'
+                placeholder='0'
                 disabled
               />
-              <div className="grid grid-cols-4 gap-3 text-2xl font-light">
+              <div className='grid grid-cols-4 gap-3 text-2xl font-light'>
                 <div
                   className={`text-white text-center text-4l col-span-2 ${
                     submit ? "" : "hidden"
@@ -140,115 +140,115 @@ const Calculator = ({ isAppOpen, toggleCalculator }) => {
                 </button>
                 <button
                   onClick={clearDisplay}
-                  className="p-6 text-center bg-gray-300 rounded-full hover:bg-opacity-60 focus:outline-none bg-opacity-65"
+                  className='p-6 text-center bg-gray-300 rounded-full hover:bg-opacity-60 focus:outline-none bg-opacity-65'
                 >
                   AC
                 </button>
                 <button
                   onClick={() => appendToDisplay("*2")}
-                  className="p-6 text-center bg-gray-300 rounded-full hover:bg-opacity-60 focus:outline-none bg-opacity-65"
+                  className='p-6 text-center bg-gray-300 rounded-full hover:bg-opacity-60 focus:outline-none bg-opacity-65'
                 >
                   x2
                 </button>
                 <button
                   onClick={() => appendToDisplay("%")}
-                  className="p-6 text-center bg-gray-300 rounded-full hover:bg-opacity-60 focus:outline-none bg-opacity-65"
+                  className='p-6 text-center bg-gray-300 rounded-full hover:bg-opacity-60 focus:outline-none bg-opacity-65'
                 >
                   %
                 </button>
                 <button
                   onClick={() => appendToDisplay("/")}
-                  className="p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   /
                 </button>
                 <button
                   onClick={() => appendToDisplay("7")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   7
                 </button>
                 <button
                   onClick={() => appendToDisplay("8")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   8
                 </button>
                 <button
                   onClick={() => appendToDisplay("9")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   9
                 </button>
                 <button
                   onClick={() => appendToDisplay("*")}
-                  className="p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   x
                 </button>
                 <button
                   onClick={() => appendToDisplay("4")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   4
                 </button>
                 <button
                   onClick={() => appendToDisplay("5")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   5
                 </button>
                 <button
                   onClick={() => appendToDisplay("6")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   6
                 </button>
                 <button
                   onClick={() => appendToDisplay("-")}
-                  className="p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   -
                 </button>
                 <button
                   onClick={() => appendToDisplay("1")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   1
                 </button>
                 <button
                   onClick={() => appendToDisplay("2")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   2
                 </button>
                 <button
                   onClick={() => appendToDisplay("3")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   3
                 </button>
                 <button
                   onClick={() => appendToDisplay("+")}
-                  className="p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   +
                 </button>
                 <button
                   onClick={() => appendToDisplay("0")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none col-span-2"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none col-span-2'
                 >
                   0
                 </button>
                 <button
                   onClick={() => appendToDisplay(".")}
-                  className="p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-neutral-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   .
                 </button>
                 <button
                   onClick={calculate}
-                  className="p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none"
+                  className='p-6 text-center bg-yellow-600 rounded-full hover:bg-opacity-60 focus:outline-none'
                 >
                   =
                 </button>
