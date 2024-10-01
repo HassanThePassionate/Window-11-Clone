@@ -24,7 +24,7 @@ To get this project running on your local machine, follow these simple steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/MishanPoudel/Windows11-3.0
+   git clone https://github.com/HassanThePassionate/Window-11-Clone.git
    ```
 
 2. **Navigate to the project directory:**
@@ -68,7 +68,7 @@ Want to contribute? We’d love your help! Fork the repository, make your change
 
 ## <div style="margin-left:10px;">⭐ Support
 
-If you enjoy this project or find it useful, please consider giving it a star on [GitHub](https://github.com/MishanPoudel/Windows11-3.0). Your support means a lot and helps encourage further development! 🌟
+If you enjoy this project or find it useful, please consider giving it a star on [GitHub](https://github.com/HassanThePassionate/Window-11-Clone.git). Your support means a lot and helps encourage further development! 🌟
 
 ## <div style="margin-left:10px;"> Contact
 
