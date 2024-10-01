@@ -14,7 +14,7 @@ const Calculator = ({ isAppOpen, toggleCalculator }) => {
 
   const calculate = () => {
     try {
-      const result = parseFloat(display.replace(/[^0-9+\-*\/\.\s]/g, ""));
+      const result = parseFloat(display.replace(/[^0-9+\-*\\/\\.\s]/g, ""));
       setClickCount((prevClickCount) => prevClickCount + 1);
 
       if (clickCount === 0 || clickCount === 4) {
